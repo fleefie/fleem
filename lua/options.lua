@@ -1,36 +1,62 @@
+-- Options! Same alias method as in /lua/mappings.lua
+-- We set all of our vim options here. No nasty vimscript around these parts!
 local o = vim.o
 
+
+-- Okay so this is super important, Lazy f*cking DIES if it doesn't have a leader
+-- mapped for SOME REASON. 
 vim.g.mapleader = " "
 
-o.laststatus = 3 -- global statusline
-o.showmode = false
 
-o.clipboard = "unnamedplus"
+-- I HATE system clipboard. If I want to yank to my clip I'll do it using <leader>y.
+-- o.clipboard = "unnamedplus"
+
 
 -- Indenting
-o.expandtab = true
-o.shiftwidth = 2
-o.smartindent = true
-o.tabstop = 2
-o.softtabstop = 2
+local indentwidth = 2 -- shorthand
+o.shiftwidth  = indentwidth  -- tabs are two long
+o.tabstop     = indentwidth -- tabs are still two long
+o.softtabstop = indentwidth -- I'm honestly too lazy to look up what that does. TWO LONG!
+o.expandtab = true -- tab to spaces
+o.smartindent = false -- Use treesitter's indent instead!
+vim.opt.fillchars = { eob = " " } -- Fills empty stuff with spaces. Dunno why thats specified.
 
-vim.opt.fillchars = { eob = " " }
-o.ignorecase = true
-o.smartcase = true
+
+-- Search
+o.hlsearch = false  -- Do not highlight search results after search is exited
+o.incsearch = true  -- Live search preview as you type. WHY IS THIS NOT DEFAULT?
+o.ignorecase = true -- Ignore case when searching...
+o.smartcase = true  -- ... unless we specify case in our search.
+                    -- ex: /search not sensitive
+                    --     /SearcH sensitive
+
+
+-- I like my mouse personally. Always comes in handy, sometimes.
+-- Pro tip: shift + mouse to bypass it on most terminals.
 o.mouse = "a"
 
-o.number = true
 
-o.signcolumn = "yes"
-o.splitbelow = true
-o.splitright = true
-o.termguicolors = true
-o.timeoutlen = 400
+-- Margin, ruler and line settings
+o.nu = true             -- Line numbers
+o.relativenumber = true -- Make them relative
+o.signcolumn = "yes"  -- Always display the sign column,
+                      -- Used for IDE stuff (breakpoints, diags) or git lines.
+o.cursorline = true -- Highlights the cursor's line
+
+
+-- Split settings
+o.splitbelow = true -- splitbelow = true
+o.splitright = true -- Another helpful comment
+
+
+-- State files settings
+o.swapfile = false
+o.backup = false
+o.undodir = vim.fn.stdpath("data") .. "/undodir"
 o.undofile = true
-o.cursorline = true
 
--- add binaries installed by mason.nvim to path
-local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
-vim.env.PATH = vim.env.PATH .. (is_windows and ";" or ":") .. vim.fn.stdpath "data" .. "/mason/bin"
 
-vim.api.nvim_set_hl(0, "IndentLine", { link = "Comment" })
+-- misc settings
+o.termguicolors = true -- true color
+o.timeoutlen = 400 -- 400ms command timeout
+o.scrolloff = 8 -- Always display 8 lines between the cursor line and the edges

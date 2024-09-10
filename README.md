@@ -1,61 +1,9 @@
-# TinyVim
-- Minimal Neovim config meant to be a starting point for new neovim users.
+I don't know who tried to make the official ``lazy.nvim`` install guides and at this point I'm too affraid to ask.
 
-![2023-09-26-133901_2560x1440_scrot](https://github.com/NvChad/tinyvim/assets/59060246/ce143ca2-07f1-4d54-971d-0f8304c50b58)
+This is meant to be my personal config, or something. If you can't understand how it works just from the file structure and lua comments, I've become the very thing I swore to destroy.
 
-# Install
-- Linux or MacOS
-```bash
-git clone https://github.com/NvChad/tinyvim ~/.config/nvim && nvim
-```
+The point of my config files is to be understandable by anyone that doesn't understand lua too well. Don't worry, it's not too complicated, the comments should explain what everything does well enough for whoever is reading this to be able to modify these as they please. I mean, if I could figure it out, surely you can too. Hopefully. Who knows!
 
-Run `:MasonInstallAll` command after lazy.nvim finishes downloading plugins
+Also feel free to use this or whatever. Honestly I don't even care about hosting this on github, I'm genuinely just abusing Microsoft's servers as a free backup tool. Might as well make it available to anyone.
 
-- Windows
-```bash
-git clone https://github.com/NvChad/tinyvim $HOME\AppData\Local\nvim --depth 1 && nvim
-```
-
-Run `:MasonInstallAll` command after lazy.nvim finishes downloading plugins
-
-# Reset
-```bash
-rm -rf ~/.local/share/nvim && rm -rf ~/.config/nvim/lazy-lock.json
-```
-
-# Dir structure
-```bash
-├── init.lua
-├── lua
-    ├── commands.lua
-    ├── mappings.lua
-    ├── options.lua
-    └── plugins
-        ├── init.lua
-        ├── configs
-            ├── cmp.lua
-            ├── telescope.lua
-            └── ( more ... )
-```
-
-# About
-- Dont expect this config to be beautiful or blazing fast (no hardcore lazyloading is done)! 
-- I'm just using some plugins with their default configs
-- This config only uses only lesser plugins which I think are important for any config.
-
-# Important Plugins used
-Below is the list of some very important plugins which I think should be must for any neovim config.
-
-| Name             | Description                                  |
-|-------------------------|----------------------------------------------|
-| nvim-tree.lua           | File tree                                    |
-| Nvim-web-devicons       | Icons provider                               |
-| nvim-treesitter         | Configure treesitter                         |
-| bufferline.nvim         | Tab + bufferline plugin                      |
-| nvim-cmp                | Autocompletion                               |
-| Luasnip & friendly snippets               | Snippets                                      |
-| mason.nvim              | Download binaries of various lsps, formatters, debuggers, etc. |
-| gitsigns.nvim                | Git-related features                         |
-| comment.nvim            | Commenting                                   |
-| telescope.nvim          | Fuzzy finder                                 |
-| conform.nvim            | Formatter                                    |
+WARNING: Severely very well opinionated with bad opinions.

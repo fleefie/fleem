@@ -1,23 +1,39 @@
-return {
-  { lazy = true, "nvim-lua/plenary.nvim" },
+-- And there it is! the plugin file.
+-- This return table are Lazy's plugin list.
+-- *try* to load configs from /lua/plugins/configs/*.lua. This is plugin-specific,
+-- of course.
+-- Oh and bc this took me way too long to understand... If a plugin asks you to
+-- specify something in its setup call, it's the "opts" table that will be ran,
+-- such as plugin.setup(opts).
 
+-- There's two possible ways to do a config, you can either put stuff in the opts
+-- table, or you may run the "config = function()" call which will run after the
+-- plugin is loaded. Both are valid, and the file structure doesn't quite allow
+-- using both at once gracefully but who cares.
+-- See treesitter and bufferline for examples of both ways to go at it.
+-- If anything fails, you can always use /lua/after.lua
+
+return {
+  -- Plenary, a library that nearly everyone uses.
   {
-    "EdenEast/nightfox.nvim",
-    priority = 1000,
-    config = true,
+    lazy = true,
+    "nvim-lua/plenary.nvim"
   },
 
+  -- NvimTree file browser
   {
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     opts = {},
   },
 
+  -- web-devicons, used by some stuff
   {
     "nvim-tree/nvim-web-devicons",
     opts = {},
   },
 
+  -- Treesitter my GOAT! super good syntax highlighting.
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
@@ -26,63 +42,36 @@ return {
     end,
   },
 
+  -- Bufferline, a... buffer line.
   {
     "akinsho/bufferline.nvim",
     event = "BufReadPre",
     opts = require "plugins.configs.bufferline",
   },
 
+  -- Lualine, a fancy little status line
   {
-    "echasnovski/mini.statusline",
+    "nvim-lualine/lualine.nvim",
     config = function()
-      require("mini.statusline").setup { set_vim_settings = false }
+      require "plugins.configs.lualine"
     end,
+    event = "VimEnter",
   },
 
-  -- we use cmp plugin only when in insert mode
-  -- so lets lazyload it at InsertEnter event, to know all the events check h-events
-  -- completion , now all of these plugins are dependent on cmp, we load them after cmp
+  -- Telescope!
   {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = {
-      -- cmp sources
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-nvim-lsp",
-      "saadparwaiz1/cmp_luasnip",
-      "hrsh7th/cmp-nvim-lua",
-
-      --list of default snippets
-      "rafamadriz/friendly-snippets",
-
-      -- snippets engine
-      {
-        "L3MON4D3/LuaSnip",
-        config = function()
-          require("luasnip.loaders.from_vscode").lazy_load()
-        end,
-      },
-
-      -- autopairs , autocompletes ()[] etc
-      {
-        "windwp/nvim-autopairs",
-        config = function()
-          require("nvim-autopairs").setup()
-
-          local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-          local cmp = require "cmp"
-          cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-        end,
-      },
-    },
-    -- made opts a function cuz cmp config calls cmp module
-    -- and we lazyloaded cmp so we dont want that file to be read on startup!
-    opts = function()
-      return require "plugins.configs.cmp"
-    end,
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    opts = require "plugins.configs.telescope",
   },
 
+
+  -- Oh no...
+
+  -- SAVE ME LSP-ZERO, SAVE ME!!!
+  -- Everything below is stuff used by it.
+
+  -- mason allows for automatic download of new language servers
   {
     "williamboman/mason.nvim",
     build = ":MasonUpdate",
@@ -90,41 +79,37 @@ return {
     opts = {},
   },
 
+  -- mason-lspconfig integrates these automatically downloaded servers into
+  -- lspconfig.
+  {
+    "williamboman/mason-lspconfig.nvim",
+    opts = require "plugins.configs.mason-lspconfig"
+  },
+
+  -- lsp-zero is a super nice abstraction layer for all of this.
+  -- I don't really know if I NEED it, but for now, I'll keep it.
+  {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v4.x',
+    config = function()
+      require "plugins.configs.lsp-zero"
+    end,
+  },
+
+  -- Allows nvim-cmp to communicate with LSPs to get completion data
+  {
+    'hrsh7th/cmp-nvim-lsp'
+  },
+
+  -- lspconfig is a nice tool to configure our LSPs. Though prefer 
+  -- mason-lspconfig for it, so everything will be in one place.
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require "plugins.configs.lspconfig"
-    end,
   },
 
+  -- Our completion engine and menu!
   {
-    "stevearc/conform.nvim",
-    lazy = true,
-    opts = require "plugins.configs.conform",
-  },
-
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require("ibl").setup {
-        indent = { char = "│" },
-        scope = { char = "│", highlight = "Comment" },
-      }
-    end,
-  },
-
-  -- files finder etc
-  {
-    "nvim-telescope/telescope.nvim",
-    cmd = "Telescope",
-    opts = require "plugins.configs.telescope",
-  },
-
-  {
-    "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {},
+    'hrsh7th/nvim-cmp',
+    opts = require "plugins.configs.cmp"
   },
 }

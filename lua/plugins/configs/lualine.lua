@@ -1,0 +1,3 @@
+-- Lualine config
+
+return {}
