@@ -8,6 +8,7 @@ require "options"
 require "mappings"
 require "commands"
 
+
 -- This snippet places lazy's install path into nvim's standard data directory.
 -- By default, this is ~/.local/share/nvim.
 -- We just concat lazy's specific install directory to it. So basically, this
@@ -19,6 +20,7 @@ local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 -- snippet is utterly useless after the first launch, but hey, a bit of error
 -- handling never held anyone back.
 if not vim.loop.fs_stat(lazypath) then
+  NotInstalled = true
   vim.fn.system {
     "git",
     "clone",

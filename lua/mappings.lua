@@ -20,21 +20,13 @@ map("n", "<Tab>", "<cmd> BufferLineCycleNext <CR>") -- Tab through buffers
 map("n", "<S-Tab>", "<cmd> BufferLineCyclePrev <CR>") -- And in reverse!
 
 -- LSP-related keybinds.
--- A bit of a hack, but it works. Put them in this function, lsp-zero will
--- load them as needed. Hopefully.
-function SetLspKeybinds(client, bufnr)
-  local opts = {buffer = bufnr}
-  client = client
-
-  map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-  map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-  map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-  map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-  map('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-  map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-  map('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-  map('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-  map({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-  map('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-
-end
+map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
+map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+map('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
+map('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+map('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
+map({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>')
+map('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')

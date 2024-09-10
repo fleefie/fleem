@@ -71,45 +71,46 @@ return {
   -- SAVE ME LSP-ZERO, SAVE ME!!!
   -- Everything below is stuff used by it.
 
-  -- mason allows for automatic download of new language servers
-  {
-    "williamboman/mason.nvim",
-    build = ":MasonUpdate",
-    cmd = { "Mason", "MasonInstall" },
-    opts = {},
-  },
-
-  -- mason-lspconfig integrates these automatically downloaded servers into
-  -- lspconfig.
-  {
-    "williamboman/mason-lspconfig.nvim",
-    opts = require "plugins.configs.mason-lspconfig"
-  },
-
   -- lsp-zero is a super nice abstraction layer for all of this.
   -- I don't really know if I NEED it, but for now, I'll keep it.
+  -- It just makes things convenient.
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v4.x',
-    config = function()
-      require "plugins.configs.lsp-zero"
-    end,
+    lazy = true,
+    config = false,
   },
 
-  -- Allows nvim-cmp to communicate with LSPs to get completion data
+  -- Mason allows automatic downloads for LSPs, linters, debuggers, etc.
+  -- It's basically a cool package manager.
   {
-    'hrsh7th/cmp-nvim-lsp'
+    'williamboman/mason.nvim',
+    lazy = false,
+    config = true,
   },
 
-  -- lspconfig is a nice tool to configure our LSPs. Though prefer 
-  -- mason-lspconfig for it, so everything will be in one place.
-  {
-    "neovim/nvim-lspconfig",
-  },
-
-  -- Our completion engine and menu!
+  -- Our actual completion engine! This part is only the actual UI though
   {
     'hrsh7th/nvim-cmp',
-    opts = require "plugins.configs.cmp"
+    event = 'InsertEnter',
+    config = function()
+      require "plugins.configs.nvim-cmp"
+    end
   },
+
+  -- nvim-lspconfig handles... the LSP config. Wowie.
+  -- NOTE: THIS ALSO INCLUDES MASON-LSPCONFIG!!!!
+  {
+    'neovim/nvim-lspconfig',
+    cmd = {'LspInfo', 'LspInstall', 'LspStart'},
+    event = {'BufReadPre', 'BufNewFile'},
+    dependencies = {
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'williamboman/mason.nvim'},
+      {'williamboman/mason-lspconfig.nvim'},
+    },
+    config = function()
+      require "plugins.configs.nvim-lspconfig"
+    end
+  }
 }
