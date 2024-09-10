@@ -42,7 +42,9 @@ o.relativenumber = true -- Make them relative
 o.signcolumn = "yes"  -- Always display the sign column,
                       -- Used for IDE stuff (breakpoints, diags) or git lines.
 o.cursorline = true -- Highlights the cursor's line
-
+vim.g.virtcolumn_char = "▕"
+vim.g.virtcolumn_priority = 10
+vim.opt.colorcolumn = "80"
 
 -- Split settings
 o.splitbelow = true -- splitbelow = true

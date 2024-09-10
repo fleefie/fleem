@@ -21,7 +21,6 @@ end
 
 -- UI settings go here!
 lsp_zero.ui({
-  float_border = 'rounded',
   sign_text = {
     error = '✘',
     warn = '▲',
