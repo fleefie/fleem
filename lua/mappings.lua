@@ -19,14 +19,8 @@ map("n", "<leader>y", "<cmd> +y <CR>") -- system clipboard copy
 map("n", "<Tab>", "<cmd> BufferLineCycleNext <CR>") -- Tab through buffers
 map("n", "<S-Tab>", "<cmd> BufferLineCyclePrev <CR>") -- And in reverse!
 
--- LSP-related keybinds.
-map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
-map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
-map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
-map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
-map('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
-map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
-map('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
-map('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
-map({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>')
-map('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+-- LSP-related keybinds:
+-- See nvim-lspconfig pluging config file!
+
+-- NvimTree
+map("n", "<leader>e", "<cmd> NvimTreeToggle <CR>")

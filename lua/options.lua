@@ -34,6 +34,7 @@ o.smartcase = true  -- ... unless we specify case in our search.
 -- I like my mouse personally. Always comes in handy, sometimes.
 -- Pro tip: shift + mouse to bypass it on most terminals.
 o.mouse = "a"
+o.mousemoveevent = true -- Enable hover events, super cool stuff!!!
 
 
 -- Margin, ruler and line settings
@@ -45,6 +46,7 @@ o.cursorline = true -- Highlights the cursor's line
 vim.g.virtcolumn_char = "▕"
 vim.g.virtcolumn_priority = 10
 vim.opt.colorcolumn = "80"
+
 
 -- Split settings
 o.splitbelow = true -- splitbelow = true

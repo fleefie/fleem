@@ -34,7 +34,7 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    opts = {},
+    opts = require "plugins.configs.nvimtree",
   },
 
   -- web-devicons, used by some stuff
