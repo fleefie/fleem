@@ -28,6 +28,7 @@ lsp_zero.set_sign_icons({
 })
 
 
+
 lsp_zero.extend_lspconfig({
   lsp_attach = lsp_attach,
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
@@ -46,16 +47,6 @@ require('mason-lspconfig').setup({
     -- it applies to every language server without a "custom handler"
     function(server_name)
       require('lspconfig')[server_name].setup({})
-    end,
-
-    -- this is the "custom handler" for `lua_ls`
-    lua_ls = function()
-      -- (Optional) Configure lua language server for neovim
-      require('lspconfig').lua_ls.setup({
-        on_init = function(client)
-          lsp_zero.nvim_lua_settings(client, {})
-        end,
-      })
     end,
   }
 })
