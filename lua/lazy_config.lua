@@ -1,5 +1,9 @@
 -- Settings to be passed to lazy when loading it. Useful to specify your colorscheme
 -- for consistency.
 return {
---  install = { colorscheme = { "nordic" } },
+  install = { colorscheme = { "nordic" } },
+  ui = {
+    border = "rounded",
+    backdrop = 100
+  }
 }
