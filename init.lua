@@ -5,7 +5,7 @@
 -- Be aware that you cannot call plugin functions in these files,
 -- but you can bind to them.
 require "options"
-require "mappings"
+require("mappings").keymaps()
 require "commands"
 
 
