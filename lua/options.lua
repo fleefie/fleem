@@ -5,6 +5,7 @@ local o = vim.o
 
 -- Okay so this is super important, Lazy f*cking DIES if it doesn't have a leader
 -- mapped for SOME REASON. 
+vim.keymap.set({"n","v"}, "<Space>", "<Nop>", { silent = true, remap = false })
 vim.g.mapleader = " "
 
 
