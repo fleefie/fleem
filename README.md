@@ -24,3 +24,12 @@ File structure is as follows:
     +- mappings.lua         keymaps. Contains submodules called by plug cfgs
     +- options.lua          general (neo)vim options
 ```
+
+Notes: 
+    - This repo is messy, but I can guarantee that it works AFTER everything has been bootstrapped. I would know, I'm writing this README using this repo's config.
+    - You may find LSP configs in lua/plugins/configs/nvim-lspconfig.lua, though you'll need to add your own custom handler if simply loading it as-is isn't enough for you.
+
+To do:
+    - Linters, formatters
+    - Tex support
+    - Refactor the whole repo to be consistent (using M.config() for example)
