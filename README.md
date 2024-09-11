@@ -1,4 +1,6 @@
-I don't know who tried to make the official ``lazy.nvim`` install guides and at this point I'm too affraid to ask.
+I don't know who tried to make the official ``lazy.nvim`` install guides and at this point I'm too affraid to ask. I really disliked their file structure so I just stole NVChad's.
+
+Also FYI: I am, let's say... SEVERELY inspired by LunarVim. I really enjoyed their lualine setup and yoinked a few of their utility functions here and there.
 
 This is meant to be my personal config, or something. If you can't understand how it works just from the file structure and lua comments, I've become the very thing I swore to destroy.
 
