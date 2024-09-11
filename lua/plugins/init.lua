@@ -88,6 +88,26 @@ return {
     end
   },
 
+  -- Nreadcrumbs status display
+  -- (that means the thing where you see the code symbol tree at the top)
+  {
+    "utilyre/barbecue.nvim",
+    name = "barbecue",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons",
+      "AlexvZyl/nordic.nvim", -- need to load colorscheme first
+    },
+    opts = {},
+  } ,
+  {
+    "SmiteshP/nvim-navic",
+    config = function()
+      require("nvim-navic").setup()
+    end,
+    event = "User FileOpened"
+  },
+
   -- Lualine, a fancy little status line
   -- FYI I *completely* stole this from LunarVim lmao.
   {

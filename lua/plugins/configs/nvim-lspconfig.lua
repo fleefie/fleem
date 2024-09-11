@@ -3,10 +3,12 @@ local lsp_zero = require('lsp-zero')
 -- lsp_attach is where you enable features that only work
 -- if there is a language server active in the file
 local lsp_attach = function(client, bufnr)
-  client = client
   local opts = { buffer = bufnr }
   -- Load keymaps from main file
   require("mappings").lspmaps(opts)
+  if client.server_capabilities.documentSymbolProvider then
+    require("nvim-navic").attach(client, bufnr)
+  end
 end
 
 -- UI settings go here!
@@ -40,7 +42,10 @@ require('mason-lspconfig').setup({
     -- this first function is the "default handler"
     -- it applies to every language server without a "custom handler"
     function(server_name)
-      require('lspconfig')[server_name].setup({})
+      require('lspconfig')[server_name].setup({
+        on_attach = lsp_attach
+      })
+
     end,
   }
 })
