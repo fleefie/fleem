@@ -10,7 +10,7 @@ M.config = {
   -- size can be a number or function which is passed the current terminal
   size = 20,
   -- Disable the default map.
-  open_mapping = [[]],
+  open_mapping = [[<c-\\>]],
   -- Hide the num col in terms
   hide_numbers = true,
   -- No shading

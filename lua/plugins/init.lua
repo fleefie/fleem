@@ -27,9 +27,6 @@ return {
     opts = require "plugins.configs.nordic-colorscheme",
   },
 
-  -- Lets you use a character for virtcolumn
-  {"xiyaowong/virtcolumn.nvim"},
-
   -- NvimTree file browser
   {
     "nvim-tree/nvim-tree.lua",
@@ -41,7 +38,9 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    opts = { indent = {char = "▏"}}
+    config = function()
+      require "plugins.configs.indent-blankline"
+    end
   },
 
   -- web-devicons, used by some stuff
