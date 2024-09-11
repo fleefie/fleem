@@ -100,11 +100,60 @@ return {
     }
   },
 
+  -- Alpha, the dashboard used here
+  {
+    "goolord/alpha-nvim",
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    main = "plugins.configs.alpha",
+    config = true
+  },
+
   -- Telescope!
   {
     "nvim-telescope/telescope.nvim",
+    lazy = false,
     cmd = "Telescope",
-    opts = require "plugins.configs.telescope",
+    dependencies = {
+      "telescope-fzf-native.nvim",
+      "nvim-telescope/telescope-project.nvim"
+    },
+    config = function()
+      require("plugins.configs.telescope").setup()
+    end
+  },
+
+  -- fzf for telescope!
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make"
+  },
+
+  -- And projects! Features telescope integration.
+  {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup()
+    end
+  },
+
+  -- Call it witch key with how weird it is to configure sometimes
+  -- Folke please I LOVE your work but WHY does it have to be so
+  -- esoteric to configure :(
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    cmd = "WhichKey",
+    config = function()
+      require("plugins.configs.which-key").setup()
+    end,
+  },
+
+  -- Comment toggle keybind
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+        -- add any options here
+    }
   },
 
   -- Super sweet, highlights todos
@@ -178,6 +227,7 @@ return {
   {
     'williamboman/mason.nvim',
     lazy = false,
+    opts = { ui = { border = "rounded" }},
     config = true,
   },
 
