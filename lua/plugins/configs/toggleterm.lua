@@ -8,7 +8,7 @@ local M = {}
 -- for compatibility reasons.
 M.config = {
   -- size can be a number or function which is passed the current terminal
-  size = 20,
+  size = 40,
   -- Disable the default map.
   open_mapping = [[<c-\\>]],
   -- Hide the num col in terms
