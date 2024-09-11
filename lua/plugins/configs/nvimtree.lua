@@ -47,7 +47,7 @@ return {
     icons = {
       error = '✘',
       warning = '▲',
-      info = 'i',
+      info = '»',
       hint = "󰌶",
     },
   },

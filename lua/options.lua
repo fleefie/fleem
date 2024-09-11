@@ -63,3 +63,8 @@ o.undofile = true
 o.termguicolors = true -- true color
 o.timeoutlen = 400 -- 400ms command timeout
 o.scrolloff = 8 -- Always display 8 lines between the cursor line and the edges
+-- vim.diagnostic.config({
+--   virtual_text = {
+--     prefix = <icon here>,
+--   },
+-- }) 

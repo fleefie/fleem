@@ -65,7 +65,7 @@ local components = {
     symbols = {
       error = "✘ ",
       warn = "▲ ",
-      info = "i ",
+      info = "» ",
       hint = "󰌶 ",
     },
   },

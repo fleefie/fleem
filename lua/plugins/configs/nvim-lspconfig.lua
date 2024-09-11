@@ -13,11 +13,15 @@ end
 lsp_zero.set_sign_icons({
   error = '✘',
   warn = '▲',
-  info = 'i',
+  info = '»',
   hint = "󰌶",
 })
 
-
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = "»",
+  },
+})
 
 lsp_zero.extend_lspconfig({
   lsp_attach = lsp_attach,

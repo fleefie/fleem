@@ -6,7 +6,7 @@ local function diagnostics_indicator(num, _, diagnostics, _)
   local symbols = {
     error = "✘",
     warning = "▲",
-    info = "i",
+    info = "»",
     hint = "󰌶",
   }
   for name, count in pairs(diagnostics) do
