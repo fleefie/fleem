@@ -4,6 +4,13 @@
 -- yourself. Though these require you to know Lua to create them.
 
 
+-- Highlight on yank
+-- See: help vim.highlight.on_yank
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank({ higroup="Search", timeout = 200 })
+  end,
+})
 
 
 
