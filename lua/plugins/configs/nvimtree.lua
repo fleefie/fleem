@@ -3,7 +3,7 @@ return {
     full_name = true,
     group_empty = true,
     indent_markers = {
-      enable = false,
+      enable = true,
       inline_arrows = true,
       icons = {
         corner = "╰",

@@ -22,5 +22,7 @@ return {
     NoiceCmdlineIconSearch = { bg = "#242933" },
     -- Okay what is it with stuff not using the built-in float borders???
     CmpPmenuBorder = { fg = "#8ebbba", bg = "#242933"},
+    -- Indent highlights
+    IblIndent = { fg = "#3b4251"}
   },
 }

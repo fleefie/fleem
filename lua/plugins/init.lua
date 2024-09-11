@@ -8,8 +8,8 @@
 
 -- There's two possible ways to do a config, you can either put stuff in the opts
 -- table, or you may run the "config = function()" call which will run after the
--- plugin is loaded. Both are valid, and the file structure doesn't quite allow
--- using both at once gracefully but who cares.
+-- plugin is loaded. You could do multiple ones if you returned a table of all
+-- tables to be used (see toggleterm.lua)
 -- See treesitter and bufferline for examples of both ways to go at it.
 -- If anything fails, you can always use /lua/after.lua
 
@@ -37,10 +37,32 @@ return {
     opts = require "plugins.configs.nvimtree",
   },
 
+  -- indent blankline. Just shows indents. That's it. That's the plugin.
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = { indent = {char = "▏"}}
+  },
+
   -- web-devicons, used by some stuff
   {
     "nvim-tree/nvim-web-devicons",
     opts = {},
+  },
+
+  -- Toggleterm for floating term toggles
+  -- Also stolen from LunarVim. I can't be fucked it's 2 AM I just want
+  -- something that works.
+  -- Allows for a toggleable terminal for any command, including a basic shell,
+  -- that will only be closed/destroyed when the command exits, even if hidden.
+  {
+    "akinsho/toggleterm.nvim",
+    init = function()
+      require("plugins.configs.toggleterm").init()
+    end,
+    config = function()
+      require("plugins.configs.toggleterm").setup()
+    end,
   },
 
   -- Treesitter my GOAT! super good syntax highlighting.
