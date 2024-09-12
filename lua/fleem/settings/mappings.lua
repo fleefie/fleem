@@ -1,33 +1,27 @@
--- Here, all of your non-plugin mappings will be defined.
--- A map command works as such :
--- vim.keymap.set(MODE, KEYBIND, COMMAND)
--- For a quick shorthand, the line right below aliases map to vim.keymap.set
-local map = vim.keymap.set
--- In my config, I like to preface everything with my leader key if it isn't
--- a default bind. And I also like to define keybinds using which-key because
--- I'm a big dummy and I forget my binds all the time, so you'll see them
--- mostly defined in /lua/plugins/configs/which-key.lua. Though I'll put all of
--- my non-leader mappings here.
+-- Sweet sweet mappings. Includes whichkey.
 
--- Used to refer to this file in different contexts
-M = {}
+local map = vim.keymap.set
+
+local M = {}
+
 
 -- Default keymaps go here.
-function M.keymaps()
--- Write, copy, paste
-map("n", "<C-s>", "<cmd> w <CR>") -- binds Ctrl+s to :w<return>
-map("n", "<leader>p", "<cmd> +p <CR>") -- system clipboard paste
-map("n", "<leader>y", "<cmd> +y <CR>") -- system clipboard copy
+function M.nvim()
 
--- bufferline.nvim, cycle buffers
-map("n", "<Tab>", "<cmd> BufferLineCycleNext <CR>") -- Tab through buffers
-map("n", "<S-Tab>", "<cmd> BufferLineCyclePrev <CR>") -- And in reverse!
+  -- Write, copy, paste
+  map("n", "<C-s>", "<cmd> w <CR>") -- binds Ctrl+s to :w<return>
+  map("n", "<leader>p", "<cmd> +p <CR>") -- system clipboard paste
+  map("n", "<leader>y", "<cmd> +y <CR>") -- system clipboard copy
+
+  -- bufferline.nvim, cycle buffers
+  map("n", "<Tab>", "<cmd> BufferLineCycleNext <CR>") -- Tab through buffers
+  map("n", "<S-Tab>", "<cmd> BufferLineCyclePrev <CR>") -- And in reverse!
 
 end
 
 
 -- Lsp-related keymaps, defined here and calls them in nvim-lspconfig.lua
-function M.lspmaps(opts)
+function M.lsp(opts)
   vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
   vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
   vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
@@ -59,8 +53,8 @@ function M.whichkey()
     -- Config-related options
     { "<leader>N", group = "NeoVim", nowait = true, remap = false },
     { "<leader>Nc", "<cmd>edit ~/.config/nvim/init.lua<cr>", desc = "Edit config.lua", nowait = true, remap = false },
-    { "<leader>Nf", "<cmd>lua require('plugins.configs.telescope').find_config_files()<cr>", desc = "Find config files", nowait = true, remap = false },
-    { "<leader>Ng", "<cmd>lua require('plugins.configs.telescope').grep_config_files()<cr>", desc = "Grep config files", nowait = true, remap = false },
+    { "<leader>Nf", "<cmd>lua require('fleem.plugins.telescope.utils').find_config_files()<cr>", desc = "Find config files", nowait = true, remap = false },
+    { "<leader>Ng", "<cmd>lua require('fleem.plugins.telescope.utils').grep_config_files()<cr>", desc = "Grep config files", nowait = true, remap = false },
     { "<leader>Nk", "<cmd>Telescope keymaps<cr>", desc = "View keymappings", nowait = true, remap = false },
 
     -- Buffer stuff
@@ -167,5 +161,6 @@ function M.whichkey()
   })
 
 end
+
 
 return M
