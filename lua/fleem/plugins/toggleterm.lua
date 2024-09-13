@@ -5,8 +5,7 @@
 -- that will only be closed/destroyed when the command exits, even if hidden.
 return {
   "akinsho/toggleterm.nvim",
-  lazy=true,
-
+  lazy=false,
   config = function()
     -- Yet another thing stolen from neovim but you're CRAZY if you think that I'm
     -- doing that shit. It's 2:30 AM as I'm typing this.
