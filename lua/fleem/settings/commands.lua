@@ -16,5 +16,4 @@ function M.nvim()
 
 end
 
-
 return M

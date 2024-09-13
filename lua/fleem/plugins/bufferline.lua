@@ -36,6 +36,9 @@ return {
         },
       },
       options = {
+        close_command = function(bufnr)
+          require("fleem.settings.commands").buf_kill("bd", bufnr, false)
+        end,
         -- RMB to dupe buffer vertically
         right_mouse_command = "vert sbuffer %d",
         -- Thanks LunarVim for this little script. Hides .md from markdown files

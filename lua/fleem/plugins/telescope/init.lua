@@ -6,7 +6,8 @@ return {
   dependencies = {
     "nvim-telescope/telescope-ui-select.nvim",
     "telescope-fzf-native.nvim",
-    "nvim-telescope/telescope-project.nvim"
+    "nvim-telescope/telescope-project.nvim",
+    "nvim-lua/plenary.nvim"
   },
   setup = function()
     local telescope = require("telescope")
