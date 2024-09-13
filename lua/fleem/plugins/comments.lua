@@ -1,6 +1,8 @@
 -- Comment toggle keybind
 return {
-  lazy = true,
-  'numToStr/Comment.nvim',
-  opts = {}
+	lazy = false,
+	"numToStr/Comment.nvim",
+	config = function()
+		require("Comment").setup()
+	end,
 }

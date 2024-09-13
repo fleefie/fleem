@@ -11,7 +11,7 @@ return {
   dependencies = {
     -- Lucky me cmp isn't technically needed to be set up here.
     "hrsh7th/cmp-nvim-lsp",
-    { "antosha417/nvim-lsp-file-operations", config = true},
+    { "antosha417/nvim-lsp-file-operations", config = true },
     -- Mason and Mason-lspconfig were set to be loaded on their own, as they're
     -- independant of the LSP server. However, now, we need them AGAIN past
     -- being simple package managers. So, we just add them to our deps.
@@ -21,7 +21,6 @@ return {
   },
 
   config = function()
-
     -- Load all three of em up! We'll use all of them here.
     -- Hopefully this shouldn't conflict with mason...
     -- But who cares it's not lazyloaded. Hopefully.
@@ -32,7 +31,7 @@ return {
     vim.api.nvim_create_autocmd('LspAttach', {
       desc = 'LSP actions',
       callback = function(event)
-        local opts = {buffer = event.buf}
+        local opts = { buffer = event.buf }
         local mappings = require("fleem.settings.mappings")
         mappings.lsp(opts)
         mappings.whichkeylsp()
@@ -70,6 +69,17 @@ return {
 
     masonlsp.setup_handlers({
       default_handler,
+
+      -- Clangd, enable linting
+      lspconfig["clangd"].setup({
+        capabilities = lsp_capabilities,
+        cmd = {
+          "clangd",
+          "--background-index",
+          "--clang-tidy",
+          "--cross-file-rename",
+        }
+      })
       -- custom handlers go here. Example:
       -- lua_ls = function()
       --   require('lspconfig').lua_ls.setup({
