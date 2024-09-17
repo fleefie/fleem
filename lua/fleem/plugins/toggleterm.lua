@@ -5,7 +5,7 @@
 -- that will only be closed/destroyed when the command exits, even if hidden.
 return {
   "akinsho/toggleterm.nvim",
-  lazy=false,
+  lazy = false,
   config = function()
     -- Yet another thing stolen from neovim but you're CRAZY if you think that I'm
     -- doing that shit. It's 2:30 AM as I'm typing this.
@@ -51,9 +51,9 @@ return {
       -- to be executed into a specified terminal. Format:
       -- { cmd, keymap, description, direction, size }
       execs = {
-        { nil, "<M-1>", "Horizontal Terminal", "horizontal", 0.3 },
-        { nil, "<M-2>", "Vertical Terminal",   "vertical",   0.4 },
-        { nil, "<M-3>", "Float Terminal",      "float",      nil },
+        { nil, "<C-1>", "Horizontal Terminal", "horizontal", 0.3 },
+        { nil, "<C-2>", "Vertical Terminal",   "vertical",   0.4 },
+        { nil, "<C-3>", "Float Terminal",      "float",      nil },
       },
     }
 
