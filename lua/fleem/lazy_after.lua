@@ -5,3 +5,5 @@
 
 -- Colorscheme setup, it's now safe to add it
 vim.cmd.colorscheme("nordic")
+
+require("fleem.settings.mappings").noice()

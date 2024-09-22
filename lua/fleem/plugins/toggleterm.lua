@@ -51,9 +51,12 @@ return {
       -- to be executed into a specified terminal. Format:
       -- { cmd, keymap, description, direction, size }
       execs = {
-        { nil, "<C-1>", "Horizontal Terminal", "horizontal", 0.3 },
-        { nil, "<C-2>", "Vertical Terminal",   "vertical",   0.4 },
-        { nil, "<C-3>", "Float Terminal",      "float",      nil },
+        { nil, "<C-1>",  "Horizontal Terminal", "horizontal", 0.3 },
+        { nil, "<C-2>",  "Vertical Terminal",   "vertical",   0.4 },
+        { nil, "<C-3>",  "Float Terminal",      "float",      nil },
+        { nil, "<C-&>",  "Horizontal Terminal", "horizontal", 0.3 },
+        { nil, "<C-é>",  "Vertical Terminal",   "vertical",   0.4 },
+        { nil, '<C-\">', "Float Terminal",      "float",      nil },
       },
     }
 
@@ -94,7 +97,7 @@ return {
     local add_exec = function(opts)
       vim.keymap.set({ "n", "t" }, opts.keymap, function()
         _exec_toggle { cmd = opts.cmd, count = opts.count, direction = opts.direction, size = opts.size() }
-      end, { desc = opts.label, noremap = true, silent = true })
+      end, { desc = opts.label, noremap = false, silent = true })
     end
 
     -- blah blah init function that takes our custom binds into account

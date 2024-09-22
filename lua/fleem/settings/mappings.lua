@@ -1,4 +1,4 @@
--- Sweet sweet mappings. Includes whichkey.
+-- Sweet sweet mappings. Includes whichkey.mapp
 
 local map = vim.keymap.set
 
@@ -30,15 +30,33 @@ function M.cmp()
   })
 end
 
+-- Noice binds
+function M.noice()
+  local wk = require("which-key")
+  wk.add({
+    { "<leader>a", "<cmd>NoiceDismiss<cr>", desc = "Dismiss Notifs", nowait = true, remap = false }
+  })
+end
+
 -- VimTeX binds
 function M.vimtex()
   local wk = require("which-key")
   wk.add({
-    { "<leader>t",  group = "TeX",              nowait = true,                 remap = false },
-    { "<leader>tb", "<cmd>VimtexCompile<cr>",   desc = "Compile (continuous)", nowait = true, remap = false },
-    { "<leader>tB", "<cmd>VimtexCompileSS<cr>", desc = "Compile",              nowait = true, remap = false },
-    { "<leader>tc", "<cmd>VimtexClean<cr>",     desc = "Clean",                nowait = true, remap = false },
-    { "<leader>ts", "<cmd>VimtexView<cr>",      desc = "Forward Search",       nowait = true, remap = false },
+    { "<leader>t",  group = "TeX and MD",       nowait = true,                     remap = false },
+    { "<leader>tb", "<cmd>VimtexCompile<cr>",   desc = "TeX Compile (continuous)", nowait = true, remap = false },
+    { "<leader>tB", "<cmd>VimtexCompileSS<cr>", desc = "TeX Compile",              nowait = true, remap = false },
+    { "<leader>tc", "<cmd>VimtexClean<cr>",     desc = "Tex Clean",                nowait = true, remap = false },
+    { "<leader>ts", "<cmd>VimtexView<cr>",      desc = "TeX Forward Search",       nowait = true, remap = false },
+  })
+end
+
+-- markdown-preview binds
+function M.markdown()
+  local wk = require("which-key")
+  wk.add({
+    { "<leader>t",  group = "TeX and MD",        nowait = true,            remap = false },
+    { "<leader>tm", "<Plug>MarkdownPreview",     desc = "MD Preview",      nowait = true, remap = false },
+    { "<leader>tM", "<Plug>MarkdownPreviewStop", desc = "MD Stop Preview", nowait = true, remap = false }
   })
 end
 
@@ -140,7 +158,7 @@ function M.whichkey()
     { "<leader>q", "<cmd>confirm q<CR>",      desc = "Quit",                   nowait = true, remap = false },
     {
       "<leader>f",
-      "<cmd>lua require('plugins.configs.telescope').find_project_files()<CR>",
+      "<cmd>lua require('fleem.plugins.telescope.utils').find_project_files()<CR>",
       desc = "Files",
       nowait = true,
       remap = false,
