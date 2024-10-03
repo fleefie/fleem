@@ -237,7 +237,7 @@ function M.whichkey()
     },
     {
       "<leader>dU",
-      "<cmd>lua require'dapui'.toggle({reset = true})<cr>",
+      "<cmd>lua require'dapui'.toggle()<cr>",
       desc = "Toggle UI",
       nowait = true,
       remap = false,
