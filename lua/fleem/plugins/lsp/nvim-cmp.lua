@@ -1,14 +1,14 @@
 -- Our actual completion engine! This part is only the actual UI though
-return  {
+return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
     -- For some icons
-    {"onsails/lspkind.nvim"},
-    {"neovim/nvim-lspconfig"},
-    {"hrsh7th/cmp-nvim-lsp"},
-    {"hrsh7th/cmp-buffer"},
-    {"hrsh7th/cmp-path"},
+    { "onsails/lspkind.nvim" },
+    { "neovim/nvim-lspconfig" },
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "hrsh7th/cmp-buffer" },
+    { "hrsh7th/cmp-path" },
   },
 
 
@@ -17,10 +17,9 @@ return  {
 
     cmp.setup({
       sources = {
-        { name = "nvim_lsp"},
+        { name = "nvim_lsp" },
         { name = "buffer" },
         { name = "path" },
-
       },
 
       mapping = require("fleem.settings.mappings").cmp(),
