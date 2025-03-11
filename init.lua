@@ -11,11 +11,11 @@ require("fleem.lazy_after")
 
 -- HACK: should be in its own file!
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = { "*.asm" },
-  command = "lua vim.api.nvim_command('setfiletype rgbds')"
+    pattern = { "*.asm" },
+    command = "lua vim.api.nvim_command('setfiletype rgbds')"
 })
 
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = { "*.inc" },
-  command = "lua vim.api.nvim_command('setfiletype rgbds')"
+    pattern = { "*.inc" },
+    command = "lua vim.api.nvim_command('setfiletype rgbds')"
 })

@@ -7,10 +7,9 @@ local M = {}
 
 -- Non-plugin stuff
 function M.nvim()
-
   -- Okay so this is super important, Lazy f*cking DIES if it doesn't have a leader
-  -- mapped for SOME REASON. 
-  vim.keymap.set({"n","v"}, "<Space>", "<Nop>", { silent = true, remap = false })
+  -- mapped for SOME REASON.
+  vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true, remap = false })
   vim.g.mapleader = " "
 
 
@@ -19,12 +18,12 @@ function M.nvim()
 
 
   -- Indenting
-  local indentwidth = 2 -- shorthand
-  o.shiftwidth  = indentwidth  -- tabs are two long
-  o.tabstop     = indentwidth -- tabs are still two long
-  o.softtabstop = indentwidth -- I'm honestly too lazy to look up what that does. TWO LONG!
-  o.expandtab = true -- tab to spaces
-  o.smartindent = false -- Use treesitter's indent instead!
+  local indentwidth = 4             -- shorthand
+  o.shiftwidth      = indentwidth   -- tabs are two long
+  o.tabstop         = indentwidth   -- tabs are still two long
+  o.softtabstop     = indentwidth   -- I'm honestly too lazy to look up what that does. TWO LONG!
+  o.expandtab       = true          -- tab to spaces
+  o.smartindent     = false         -- Use treesitter's indent instead!
   vim.opt.fillchars = { eob = " " } -- Fills empty stuff with spaces. Dunno why thats specified.
 
 
@@ -33,8 +32,8 @@ function M.nvim()
   o.incsearch = true  -- Live search preview as you type. WHY IS THIS NOT DEFAULT?
   o.ignorecase = true -- Ignore case when searching...
   o.smartcase = true  -- ... unless we specify case in our search.
-                      -- ex: /search not sensitive
-                      --     /SearcH sensitive
+  -- ex: /search not sensitive
+  --     /SearcH sensitive
 
 
   -- I like my mouse personally. Always comes in handy, sometimes.
@@ -46,9 +45,9 @@ function M.nvim()
   -- Margin, ruler and line settings
   o.nu = true             -- Line numbers
   o.relativenumber = true -- Make them relative
-  o.signcolumn = "yes"  -- Always display the sign column,
-                        -- Used for IDE stuff (breakpoints, diags) or git lines.
-  o.cursorline = true -- Highlights the cursor's line
+  o.signcolumn = "yes"    -- Always display the sign column,
+  -- Used for IDE stuff (breakpoints, diags) or git lines.
+  o.cursorline = true     -- Highlights the cursor's line
   vim.opt.colorcolumn = "80"
 
 
@@ -66,14 +65,13 @@ function M.nvim()
 
   -- misc settings
   o.termguicolors = true -- true color
-  o.timeoutlen = 400 -- 400ms command timeout
-  o.scrolloff = 8 -- Always display 8 lines between the cursor line and the edges
+  o.timeoutlen = 400     -- 400ms command timeout
+  o.scrolloff = 8        -- Always display 8 lines between the cursor line and the edges
   -- vim.diagnostic.config({
   --   virtual_text = {
   --     prefix = <icon here>,
   --   },
-  -- }) 
+  -- })
 end
-
 
 return M
