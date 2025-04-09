@@ -2,6 +2,7 @@ return {
     "mfussenegger/nvim-jdtls",
     ft = "java",
     config = function()
+        local home_dir = os.getenv("HOME")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         -- get the mason install path
@@ -10,7 +11,8 @@ return {
         local config = {
             cmd = {
                 install_path .. "/bin/jdtls",
-                "-Dlog.level=WARN"
+                "--jvm-arg=-javaagent:" .. home_dir .. "/.local/share/nvim/lsp_servers/jdtls/lombok.jar",
+                "-Dlog.level=WARN",
             },
             capabilities = capabilities,
             root_dir = vim.fs.dirname(
