@@ -7,12 +7,12 @@ local M = {}
 -- Default keymaps go here.
 function M.nvim()
     -- Write, copy, paste
-    map("n", "<C-s>", "<cmd> w <CR>")    -- binds Ctrl+s to :w<return>
+    map("n", "<C-s>", "<cmd> w <CR>")      -- binds Ctrl+s to :w<return>
     map("n", "<leader>p", "<cmd> +p <CR>") -- system clipboard paste
     map("n", "<leader>y", "<cmd> +y <CR>") -- system clipboard copy
 
     -- bufferline.nvim, cycle buffers
-    map("n", "<Tab>", "<cmd> BufferLineCycleNext <CR>") -- Tab through buffers
+    map("n", "<Tab>", "<cmd> BufferLineCycleNext <CR>")   -- Tab through buffers
     map("n", "<S-Tab>", "<cmd> BufferLineCyclePrev <CR>") -- And in reverse!
 end
 
@@ -97,7 +97,7 @@ function M.whichkeylsp()
         { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action",        nowait = true, remap = false },
         {
             "<leader>ld",
-            "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>",
+            "<cmd>Telescope diagnostics wrap_results=true buffnr=0 no_sign=true hide_filename=true disable_coordinates=true<cr>",
             desc = "Buffer Diagnostics",
             nowait = true,
             remap = false,

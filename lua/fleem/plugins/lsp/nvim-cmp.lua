@@ -42,19 +42,16 @@ return {
                 end,
             },
 
-            -- window = {
-            --   completion = {
-            --     border = "none",
-            --     winhighlight = "Normal:Normal,FloatBorder:FloatBorder,Search:None",
-            --     col_offset = -3,
-            --     side_padding = 0,
-            --   },
-            --   documentation = {
-            --     border = "none",
-            --     winhighlight = "Normal:Normal,FloatBorder:FloatBorder,Search:None",
-            --   },
-            -- },
-
+            window = {
+                completion = {
+                    winhighlight = "Normal:CmpNormal,Selected:CmpSelected",
+                    col_offset = -3,
+                    side_padding = 0,
+                },
+                documentation = {
+                    winhighlight = "Normal:CmpNormal"
+                }
+            },
             formatting = {
                 fields = { "kind", "abbr", "menu" },
                 format = function(entry, vim_item)
@@ -62,6 +59,7 @@ return {
                     local strings = vim.split(kind.kind, "%s", { trimempty = true })
                     kind.kind = " " .. (strings[1] or "") .. " "
                     kind.menu = "    (" .. (strings[2] or "") .. ")"
+
                     return kind
                 end,
             },
