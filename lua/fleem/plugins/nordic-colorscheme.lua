@@ -11,7 +11,7 @@ return {
         on_highlight = function(hl, pal)
             local title_color = pal.orange.base
             -- Make selected bold
-            hl.Visual = { bold = true }
+            hl.Visual = { bold = true, bg = pal.black0 }
             -- Make command line dark
             hl.MsgArea = { bg = pal.black0 }
 
