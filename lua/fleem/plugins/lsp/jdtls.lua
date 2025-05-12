@@ -1,3 +1,7 @@
+-- Java language server.
+-- This is useful because this plugin provides WAY more features than
+-- just using it as a regular LSP.
+
 return {
     "mfussenegger/nvim-jdtls",
     ft = "java",
@@ -6,6 +10,8 @@ return {
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         -- get the mason install path
+        -- Using Mason here since it's just plain more convenient.
+        -- Currently on Gentoo and there's no official jdtls ebuild so...
         local install_path = require("mason-registry").get_package("jdtls"):get_install_path()
         -- local debug_install_path = require("mason-registry").get_package("java-debug-adapter"):get_install_path()
         local config = {

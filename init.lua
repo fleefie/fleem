@@ -19,3 +19,5 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
     pattern = { "*.inc" },
     command = "lua vim.api.nvim_command('setfiletype rgbds')"
 })
+
+require("fleem.lsp").config_lsps()
